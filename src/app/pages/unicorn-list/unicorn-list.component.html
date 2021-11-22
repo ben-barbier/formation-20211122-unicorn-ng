@@ -1,4 +1,3 @@
-Bonne nouvelle, il reste {{ unicorns.length }} licornes à adopter 🚀 !!!
-<app-unicorn-card [unicorn]="unicorns[0]"></app-unicorn-card>
-<app-unicorn-card [unicorn]="unicorns[1]"></app-unicorn-card>
-<app-unicorn-card [unicorn]="unicorns[2]"></app-unicorn-card>
+<p>Bonne nouvelle, il reste {{ unicorns.length }} licornes à adopter 🚀 !!!</p>
+
+<app-unicorn-card *ngFor="let unicorn of unicorns" [unicorn]="unicorn" (deleted)="removeUnicornFromList(unicorn)"></app-unicorn-card>
