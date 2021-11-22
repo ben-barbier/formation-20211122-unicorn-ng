@@ -8,11 +8,9 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class UnicornsService {
-
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<Unicorn[]> {
     return this.http.get<Unicorn[]>(`${environment.apiUrl}/unicorns`);
   }
 }
-

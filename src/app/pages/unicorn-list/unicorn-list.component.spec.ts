@@ -8,9 +8,8 @@ describe('UnicornListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UnicornListComponent ]
-    })
-    .compileComponents();
+      declarations: [UnicornListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
