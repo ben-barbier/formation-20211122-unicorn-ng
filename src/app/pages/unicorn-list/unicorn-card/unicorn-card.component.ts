@@ -10,6 +10,8 @@ export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
   @Input() public unicorn!: Unicorn;
   @Output() public deleted = new EventEmitter<void>();
 
+  public isOld = false;
+
   constructor() {
     console.log('constructor');
     // ICI, les Inputs ne sont pas renseignés ( === undefined)
@@ -21,6 +23,9 @@ export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('ngOnInit');
+    const currentYear = new Date().getFullYear();
+    const unicornAge = currentYear - this.unicorn.birthyear;
+    this.isOld = unicornAge > 60;
   }
 
   ngOnDestroy(): void {

@@ -1,20 +1,9 @@
 <div>{{ unicorn.id }}</div>
-<div>
-  <p>{{ unicorn.name }}</p>
-</div>
+<div>{{ unicorn.name }}</div>
 <div>{{ unicorn.weight }}</div>
 <div><img [src]="unicorn.photo" [alt]="'Photo of ' + unicorn.name" /></div>
-<div>{{ unicorn.birthyear }}</div>
+<div [ngClass]="{ old: isOld }">{{ unicorn.birthyear }}</div>
 <div>{{ unicorn.capacities }}</div>
 <div>{{ unicorn.hobbies }}</div>
 
 <button type="button" (click)="deleteUnicorn()">🗑</button>
-
-<template id="totoId">
-  <div>
-    <p>trucs !</p>
-    <p>trucs !</p>
-    <p>trucs !</p>
-    <p>trucs !</p>
-  </div>
-</template>
