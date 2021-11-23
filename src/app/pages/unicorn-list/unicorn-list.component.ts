@@ -21,4 +21,8 @@ export class UnicornListComponent implements OnInit {
   public removeUnicornFromList(unicorn: Unicorn): void {
     this.unicorns = this.unicorns.filter((u: Unicorn) => u.id !== unicorn.id);
   }
+
+  public updateUnicornFromList(unicorn: Unicorn): void {
+    this.unicorns = this.unicorns.map((u) => (u.id === unicorn.id ? unicorn : u));
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Unicorn } from '../../../shared/models/unicorn.model';
 import { CartService } from '../../../shared/services/cart.service';
+import { EditUnicornDialogComponent } from './edit-unicorn-dialog/edit-unicorn-dialog.component';
 
 @Component({
   selector: 'app-unicorn-card',
@@ -10,10 +12,11 @@ import { CartService } from '../../../shared/services/cart.service';
 export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
   @Input() public unicorn!: Unicorn;
   @Output() public deleted = new EventEmitter<void>();
+  @Output() public updated = new EventEmitter<Unicorn>();
 
   public isOld = false;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private dialog: MatDialog) {
     console.log('constructor');
     // ICI, les Inputs ne sont pas renseignés ( === undefined)
   }
@@ -39,5 +42,18 @@ export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
 
   public addToCart(): void {
     this.cartService.addToCart(this.unicorn);
+  }
+
+  public editUnicorn(): void {
+    this.dialog
+      .open(EditUnicornDialogComponent, {
+        data: {
+          unicorn: this.unicorn,
+        },
+      })
+      .afterClosed()
+      .subscribe((unicorn: Unicorn) => {
+        this.updated.emit(unicorn);
+      });
   }
 }
