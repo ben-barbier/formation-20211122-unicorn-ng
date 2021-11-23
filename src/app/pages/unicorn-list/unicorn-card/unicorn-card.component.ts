@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Unicorn } from '../../../shared/models/unicorn.model';
+import { CartService } from '../../../shared/services/cart.service';
 
 @Component({
   selector: 'app-unicorn-card',
@@ -12,7 +13,7 @@ export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
 
   public isOld = false;
 
-  constructor() {
+  constructor(private cartService: CartService) {
     console.log('constructor');
     // ICI, les Inputs ne sont pas renseignés ( === undefined)
   }
@@ -34,5 +35,9 @@ export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
 
   public deleteUnicorn(): void {
     this.deleted.emit();
+  }
+
+  public addToCart(): void {
+    this.cartService.addToCart(this.unicorn);
   }
 }
