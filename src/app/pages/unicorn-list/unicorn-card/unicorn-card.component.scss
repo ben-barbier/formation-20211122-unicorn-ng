@@ -1,4 +1,17 @@
+:host {
+  margin: 12px;
+}
+
 .old {
   font-weight: bold;
   color: red;
+}
+
+mat-card {
+  max-width: 250px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-evenly;
 }

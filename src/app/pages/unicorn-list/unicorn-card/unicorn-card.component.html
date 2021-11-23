@@ -1,10 +1,24 @@
-<div>{{ unicorn.id }}</div>
-<div>{{ unicorn.name }}</div>
-<div>{{ unicorn.weight }}</div>
-<div><img [src]="unicorn.photo" [alt]="'Photo of ' + unicorn.name" /></div>
-<div [ngClass]="{ old: isOld }">{{ unicorn.birthyear }}</div>
-<div>{{ unicorn.capacities }}</div>
-<div>{{ unicorn.hobbies }}</div>
-
-<button type="button" (click)="deleteUnicorn()">🗑</button>
-<button type="button" (click)="addToCart()">❤️</button>
+<mat-card *ngIf="unicorn">
+  <mat-card-header>
+    <img mat-card-avatar [src]="unicorn.photo" alt="Photo" />
+    <mat-card-title>{{ unicorn.name }}</mat-card-title>
+    <mat-card-subtitle>id: {{ unicorn.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="unicorn.photo" alt="Photo" />
+  <mat-card-content>
+    <div>weight: {{ unicorn.weight }}</div>
+    <div [ngClass]="{ old: isOld }">birthyear: {{ unicorn.birthyear }}</div>
+    <div>hobbies: {{ unicorn.hobbies }}</div>
+    <div>capacities: {{ unicorn.capacities }}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-mini-fab color="warn" (click)="deleteUnicorn()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="addToCart()">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button type="button" mat-mini-fab color="primary"><mat-icon>visibility</mat-icon></button>
+    <button type="button" mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+  </mat-card-actions>
+</mat-card>
