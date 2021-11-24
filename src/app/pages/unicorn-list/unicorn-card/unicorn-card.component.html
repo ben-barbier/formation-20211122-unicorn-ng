@@ -8,6 +8,7 @@
   <mat-card-content>
     <div>weight: {{ unicorn.weight }}</div>
     <div [ngClass]="{ old: isOld }">birthyear: {{ unicorn.birthyear }}</div>
+    <div>age: {{ age }}</div>
     <div>hobbies: {{ unicorn.hobbies }}</div>
     <div>capacities: {{ unicorn.capacities }}</div>
   </mat-card-content>
@@ -20,5 +21,6 @@
     </button>
     <button type="button" mat-mini-fab color="primary"><mat-icon>visibility</mat-icon></button>
     <button type="button" mat-mini-fab color="primary" (click)="editUnicorn()"><mat-icon>edit</mat-icon></button>
+    <button type="button" mat-mini-fab color="primary" (click)="editUnicornReactive()"><mat-icon>edit</mat-icon></button>
   </mat-card-actions>
 </mat-card>

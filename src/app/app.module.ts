@@ -1,7 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { EditUnicornDialogComponent } from './pages/unicorn-list/unicorn-card/edit-unicorn-dialog/edit-unicorn-dialog.component';
+import { EditUnicornReactiveDialogComponent } from './pages/unicorn-list/unicorn-card/edit-unicorn-reactive-dialog/edit-unicorn-reactive-dialog.component';
 import { UnicornCardComponent } from './pages/unicorn-list/unicorn-card/unicorn-card.component';
 import { UnicornListComponent } from './pages/unicorn-list/unicorn-list.component';
 
@@ -28,7 +29,15 @@ interface Facture {
 }
 
 @NgModule({
-  declarations: [AppComponent, UnicornListComponent, UnicornCardComponent, HeaderComponent, NavComponent, EditUnicornDialogComponent],
+  declarations: [
+    AppComponent,
+    UnicornListComponent,
+    UnicornCardComponent,
+    HeaderComponent,
+    NavComponent,
+    EditUnicornDialogComponent,
+    EditUnicornReactiveDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,6 +54,7 @@ interface Facture {
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

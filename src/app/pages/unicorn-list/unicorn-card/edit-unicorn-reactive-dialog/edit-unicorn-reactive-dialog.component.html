@@ -1,18 +1,19 @@
 <h2 mat-dialog-title>Edit {{ data.unicorn.name }}</h2>
-<form (ngSubmit)="updateUnicorn(unicornForm.value)" #unicornForm="ngForm">
+<form (ngSubmit)="updateUnicorn(unicornForm.value)" [formGroup]="unicornForm">
   <mat-dialog-content class="mat-typography">
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput type="text" name="name" [ngModel]="data.unicorn.name" required />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <input matInput type="text" formControlName="name" />
+      <mat-error *ngIf="unicornForm.controls['name'].invalid">Ce champs est requis.</mat-error>
     </mat-form-field>
 
     <br />
 
     <mat-form-field appearance="outline">
       <mat-label>Birthyear</mat-label>
-      <input matInput type="number" name="birthyear" [ngModel]="data.unicorn.birthyear" required />
-      <mat-icon matSuffix>date</mat-icon>
+      <input matInput type="number" formControlName="birthyear" />
+      <mat-error *ngIf="unicornForm.controls['birthyear'].hasError('min')">Année minimum: 1800</mat-error>
+      <mat-error *ngIf="unicornForm.controls['birthyear'].hasError('required')">Ce champs est requis.</mat-error>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions>

@@ -25,4 +25,9 @@ export class UnicornListComponent implements OnInit {
   public updateUnicornFromList(unicorn: Unicorn): void {
     this.unicorns = this.unicorns.map((u) => (u.id === unicorn.id ? unicorn : u));
   }
+
+  getInfo() {
+    console.count('getInfo');
+    return 'info !!!!';
+  }
 }
