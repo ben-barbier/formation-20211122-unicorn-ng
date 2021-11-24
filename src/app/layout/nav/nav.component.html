@@ -11,7 +11,7 @@
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>
       <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item [routerLink]="['/super-admin']">Super Admin</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -24,6 +24,6 @@
       <app-header></app-header>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <app-unicorn-list></app-unicorn-list>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

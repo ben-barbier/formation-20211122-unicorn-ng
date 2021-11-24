@@ -19,7 +19,7 @@
     <button mat-mini-fab color="primary" (click)="addToCart()">
       <mat-icon>favorite</mat-icon>
     </button>
-    <button type="button" mat-mini-fab color="primary"><mat-icon>visibility</mat-icon></button>
+    <a mat-mini-fab color="primary" [routerLink]="['/unicorn', unicorn.id]"><mat-icon>visibility</mat-icon></a>
     <button type="button" mat-mini-fab color="primary" (click)="editUnicorn()"><mat-icon>edit</mat-icon></button>
     <button type="button" mat-mini-fab color="primary" (click)="editUnicornReactive()"><mat-icon>edit</mat-icon></button>
   </mat-card-actions>
