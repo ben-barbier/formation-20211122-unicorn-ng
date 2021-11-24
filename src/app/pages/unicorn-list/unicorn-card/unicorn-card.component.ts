@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Unicorn } from '../../../shared/models/unicorn.model';
 import { CartService } from '../../../shared/services/cart.service';
@@ -10,7 +10,7 @@ import { EditUnicornReactiveDialogComponent } from './edit-unicorn-reactive-dial
   templateUrl: './unicorn-card.component.html',
   styleUrls: ['./unicorn-card.component.scss'],
 })
-export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
+export class UnicornCardComponent implements OnInit, OnDestroy {
   @Input() public unicorn!: Unicorn;
   @Output() public deleted = new EventEmitter<void>();
   @Output() public updated = new EventEmitter<Unicorn>();
@@ -19,16 +19,12 @@ export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
   public age = 0;
 
   constructor(private cartService: CartService, private dialog: MatDialog) {
-    console.log('constructor');
+    console.count('constructor');
     // ICI, les Inputs ne sont pas renseignés ( === undefined)
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
-
   ngOnInit(): void {
-    console.log('ngOnInit');
+    console.count('ngOnInit');
     const currentYear = new Date().getFullYear();
     const unicornAge = currentYear - this.unicorn.birthyear;
     this.isOld = unicornAge > 60;
@@ -36,7 +32,7 @@ export class UnicornCardComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
+    console.count('ngOnDestroy');
   }
 
   public deleteUnicorn(): void {

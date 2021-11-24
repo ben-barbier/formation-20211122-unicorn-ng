@@ -1,3 +1,14 @@
-{{ unicorn?.name }}
+<ng-container *ngIf="unicorn$ | async as unicorn">
+  <pre>{{ unicorn | json }}</pre>
+
+  {{ unicorn.name }}
+  {{ unicorn.birthyear }}
+  {{ unicorn.hobbies }}
+</ng-container>
 
 <img src="assets/dark-slack.png" />
+
+<br />
+
+<a [routerLink]="['/unicorn', '1']">Unicorn 1</a>
+<a [routerLink]="['/unicorn', '3']">Unicorn 3</a>

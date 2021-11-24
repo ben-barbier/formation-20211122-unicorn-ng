@@ -5,8 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
-const matModules = [CommonModule, MatIconModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatButtonModule];
+const matModules = [CommonModule, MatIconModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule];
 
 @NgModule({
   declarations: [],

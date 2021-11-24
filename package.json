@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "prettier": "prettier --write \"**\"",
-    "prettier:check": "prettier --check \"**\""
+    "prettier:check": "prettier --check \"**\"",
+    "build:audit": "ng build --stats-json",
+    "audit": "webpack-bundle-analyzer ./dist/unicorn-ng/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +25,7 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@ngneat/until-destroy": "^9.0.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -52,6 +55,7 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "prettier": "^2.4.1",
     "prettier-plugin-organize-imports": "^2.3.4",
-    "typescript": "~4.4.3"
+    "typescript": "~4.4.3",
+    "webpack-bundle-analyzer": "^4.5.0"
   }
 }

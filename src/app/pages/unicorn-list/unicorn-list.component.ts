@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Unicorn } from '../../shared/models/unicorn.model';
 import { UnicornsService } from '../../shared/services/unicorns.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-unicorn-list',
   templateUrl: './unicorn-list.component.html',
@@ -9,13 +11,17 @@ import { UnicornsService } from '../../shared/services/unicorns.service';
 })
 export class UnicornListComponent implements OnInit {
   public unicorns: Unicorn[] = [];
+  public trackById = (index: number, unicorn: Unicorn) => unicorn.id;
 
   constructor(private unicornsService: UnicornsService) {}
 
   ngOnInit(): void {
-    this.unicornsService.getAll().subscribe((unicorns: Unicorn[]) => {
-      this.unicorns = unicorns;
-    });
+    this.unicornsService
+      .getAll()
+      .pipe(untilDestroyed(this))
+      .subscribe((unicorns: Unicorn[]) => {
+        this.unicorns = unicorns;
+      });
   }
 
   public removeUnicornFromList(unicorn: Unicorn): void {

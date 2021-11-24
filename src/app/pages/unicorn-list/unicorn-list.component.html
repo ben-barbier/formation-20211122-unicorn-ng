@@ -2,7 +2,7 @@
 
 <div class="list">
   <app-unicorn-card
-    *ngFor="let unicorn of unicorns"
+    *ngFor="let unicorn of unicorns; trackBy: trackById"
     [unicorn]="unicorn"
     (deleted)="removeUnicornFromList(unicorn)"
     (updated)="updateUnicornFromList($event)"

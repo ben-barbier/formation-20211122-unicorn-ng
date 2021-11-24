@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { Unicorn } from '../../../../shared/models/unicorn.model';
 
 @Component({
@@ -19,6 +20,10 @@ export class EditUnicornReactiveDialogComponent {
     this.unicornForm = fb.group({
       name: [data.unicorn.name, [Validators.required]], // 1 FormControl
       birthyear: [data.unicorn.birthyear, [Validators.required, Validators.min(1800)]], // 1 FormControl
+    });
+
+    this.unicornForm.controls['name'].valueChanges.pipe(debounceTime(300), distinctUntilChanged()).subscribe((name) => {
+      console.log(name);
     });
   }
 
